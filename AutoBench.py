@@ -444,20 +444,26 @@ def extract_drive():
 # RAM Crawling
 def extract_ram():
     try:
-        th1 = Process(target=crawling_thread, args=(1, "ram", 'https://www.memorybenchmark.net/read_uncached_ddr4_intel.html', "r"))
-        th2 = Process(target=crawling_thread, args=(2, "ram", 'https://www.memorybenchmark.net/write_ddr4_intel.html', "w"))
-        th3 = Process(target=crawling_thread, args=(3, "ram", 'https://www.memorybenchmark.net/latency_ddr4_intel.html', "l"))
-        th4 = Process(target=crawling_thread, args=(4, "ram", 'https://www.memorybenchmark.net/read_uncached_ddr3_intel.html', "r"))
-        th5 = Process(target=crawling_thread, args=(5, "ram", 'https://www.memorybenchmark.net/write_ddr3_intel.html', "w"))
-        th6 = Process(target=crawling_thread, args=(6, "ram", 'https://www.memorybenchmark.net/latency_ddr3_intel.html', "l"))
-        th1.start(),th2.start(),th3.start(),th4.start(),th5.start(),th6.start()
-        th1.join(),th2.join(),th3.join(),th4.join(),th5.join(),th6.join()
+        th1 = Process(target=crawling_thread, args=(1, "ram", 'https://www.memorybenchmark.net/read_uncached_ddr4.html', "r"))
+        th2 = Process(target=crawling_thread, args=(2, "ram", 'https://www.memorybenchmark.net/write_ddr4.html', "w"))
+        th3 = Process(target=crawling_thread, args=(3, "ram", 'https://www.memorybenchmark.net/latency_ddr4.html', "l"))
+        th4 = Process(target=crawling_thread, args=(4, "ram", 'https://www.memorybenchmark.net/read_uncached_ddr3.html', "r"))
+        th5 = Process(target=crawling_thread, args=(5, "ram", 'https://www.memorybenchmark.net/write_ddr3.html', "w"))
+        th6 = Process(target=crawling_thread, args=(6, "ram", 'https://www.memorybenchmark.net/latency_ddr3.html', "l"))
+        
+        th7 = Process(target=crawling_thread, args=(7, "ram", 'https://www.memorybenchmark.net/read_uncached_ddr5.html', "r"))
+        th8 = Process(target=crawling_thread, args=(8, "ram", 'https://www.memorybenchmark.net/write_ddr5.html', "w"))
+        th9 = Process(target=crawling_thread, args=(9, "ram", 'https://www.memorybenchmark.net/latency_ddr5.html', "l"))
+        
+        th1.start(),th2.start(),th3.start(),th4.start(),th5.start(),th6.start(),th7.start(),th8.start(),th9.start()
+        th1.join(),th2.join(),th3.join(),th4.join(),th5.join(),th6.join(),th7.join(),th8.join(),th9.join()
     except:
         return
     print('RAM Data Extract Complete!!!')
     convert_excel("ram")
     file_delete("ram")
     dayfilename("ram")
+
 
 # Make CPU Data
 def make_csv_new(name):
